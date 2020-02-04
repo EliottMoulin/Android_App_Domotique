@@ -1,4 +1,4 @@
-package com.example.projetapp;
+package com.example.domotique;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

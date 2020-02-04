@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ProjetApp</string>
+    <string name="app_name">Home Node Control</string>
+    <string name="input_mdp">Saisir password ...</string>
+
 </resources>
