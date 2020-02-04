@@ -1,4 +1,4 @@
-package com.example.domotique;
+package com.example.domotique.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.domotique.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -113,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this,"Validé !",Toast.LENGTH_SHORT).show();
             startMainActivity(view);
         }else {
+            this.password.setText("");
             this.password.setError("Password incorect !");
         }
 
