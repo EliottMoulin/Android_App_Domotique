@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Home Node Control</string>
-    <string name="input_mdp">Saisir password ...</string>
+    <string name="input_mdp">password ...</string>
+    <string name="allports" >All</string>
+    <string name="port1" >Port 1</string>
+    <string name="port2" >Port 2</string>
+    <string name="port3" >Port 3</string>
+    <string name="port4" >Port 4</string>
+
 
 </resources>

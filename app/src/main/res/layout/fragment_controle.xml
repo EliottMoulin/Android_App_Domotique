@@ -1,16 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+
+
+    <Switch
+        android:id="@+id/switchAll"
+        android:layout_width="297dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/allports"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/switchPort1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchAll" />
+
+    <Switch
+        android:id="@+id/switchPort1"
+        android:layout_width="297dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/port1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchAll" />
+
+    <Switch
+        android:id="@+id/switchPort2"
+        android:layout_width="297dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/port2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPort1" />
+
+    <Switch
+        android:id="@+id/switchPort3"
+        android:layout_width="297dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/port3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPort2" />
+
+    <Switch
+        android:id="@+id/switchPort4"
+        android:layout_width="297dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/port4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPort3" />
+
+
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPort4"
+        app:layout_constraintVertical_bias="0.225" />
+
+    <ImageView
+        android:id="@+id/imgLed1"
+        android:layout_width="55dp"
+        android:layout_height="86dp"
+        app:layout_constraintEnd_toStartOf="@+id/imgLed2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:srcCompat="@drawable/led_down" />
+
+    <ImageView
+        android:id="@+id/imgLed2"
+        android:layout_width="55dp"
+        android:layout_height="86dp"
+        android:layout_marginEnd="193dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:srcCompat="@drawable/led_down" />
+
+    <ImageView
+        android:id="@+id/imgLed3"
+        android:layout_width="55dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="193dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:srcCompat="@drawable/led_down" />
+
+    <ImageView
+        android:id="@+id/imgLed4"
+        android:layout_width="55dp"
+        android:layout_height="86dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgLed3"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:srcCompat="@drawable/led_down" />
 
     <TextView
+        android:id="@+id/numP1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="controle Fragment"
-        android:id="@+id/textView_movie"
-        android:layout_gravity="center_horizontal"/>
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLed1"
+        app:layout_constraintEnd_toEndOf="@+id/imgLed1"
+        app:layout_constraintStart_toStartOf="@+id/imgLed1" />
+
+    <TextView
+        android:id="@+id/numP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLed2"
+        app:layout_constraintEnd_toEndOf="@+id/imgLed2"
+        app:layout_constraintStart_toStartOf="@+id/imgLed2" />
+
+    <TextView
+        android:id="@+id/numP3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLed3"
+        app:layout_constraintEnd_toEndOf="@+id/imgLed3"
+        app:layout_constraintStart_toStartOf="@+id/imgLed3" />
+    <TextView
+        android:id="@+id/numP4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLed4"
+        app:layout_constraintEnd_toEndOf="@+id/imgLed4"
+        app:layout_constraintStart_toStartOf="@+id/imgLed4" />
 
 
-</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
