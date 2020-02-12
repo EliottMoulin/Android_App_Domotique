@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import com.example.domotique.R;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText password;
@@ -50,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
         this.validate = super.findViewById(R.id.buttonPass);
         this.validate.setEnabled(false);
+
 
     }
 
@@ -112,14 +117,15 @@ public class LoginActivity extends AppCompatActivity {
         //Toast.makeText(this,this.password.getText(),Toast.LENGTH_LONG).show();
         String pass = "2121";
         if ( this.password.getText().toString().equals(pass)){
-            Toast.makeText(this,"Validé !",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Bienvenue !",Toast.LENGTH_SHORT).show();
             startMainActivity(view);
         }else {
             this.password.setText("");
             this.password.setError("Password incorect !");
         }
 
-
-
     }
+
+
+
 }
