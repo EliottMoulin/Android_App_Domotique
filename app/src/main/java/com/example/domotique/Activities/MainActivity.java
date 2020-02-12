@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity{
         tabLayout = findViewById(R.id.mytabs);
         tabLayout.setupWithViewPager(viewPager);
 
-
+        
 
 
         if (!isConnected()) {
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity{
                                 e.printStackTrace();
                             }
 
-
+                            Snackbar.make(findViewById(R.id.mainLayout), "Connecté à "+ipSet , Snackbar.LENGTH_LONG).show();
                             dialog.dismiss();
                         }
                         else {

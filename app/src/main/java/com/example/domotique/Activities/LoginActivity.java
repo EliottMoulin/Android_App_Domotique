@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.domotique.R;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,6 +56,27 @@ public class LoginActivity extends AppCompatActivity {
         this.validate = super.findViewById(R.id.buttonPass);
         this.validate.setEnabled(false);
 
+        /* --- CREATION DU FICHIER DE STOCKAGE DE IP SERVER --- */
+
+        FileInputStream inputStream = null;
+        try {
+            inputStream = this.openFileInput("ipAttribue");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+        }
+        if (inputStream == null){
+            FileOutputStream output ;
+            try {
+                output = openFileOutput("ipAttribue", MODE_PRIVATE);
+                if(output != null)
+                    output.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 

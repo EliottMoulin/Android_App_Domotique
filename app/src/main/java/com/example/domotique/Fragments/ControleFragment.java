@@ -2,33 +2,24 @@ package com.example.domotique.Fragments;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 
-import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.domotique.Activities.MainActivity;
 import com.example.domotique.R;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -36,8 +27,6 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 public class ControleFragment extends Fragment {
@@ -62,7 +51,13 @@ public class ControleFragment extends Fragment {
     private TextView test;
 
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (myHandler != null) {
+            myHandler.removeCallbacks(myRunnable);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,56 +76,65 @@ public class ControleFragment extends Fragment {
         this.imgPort4 = view.findViewById(R.id.imgLed4);
 
 
-
-
         this.test = view.findViewById(R.id.test);
 
-       this.switchAllPorts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-               if (b){
-                   ControleFragment.this.state = "ON";
-                   ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                   ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                   ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                   ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                   ControleFragment.this.switchport1.setChecked(true);
-                   ControleFragment.this.switchport2.setChecked(true);
-                   ControleFragment.this.switchport3.setChecked(true);
-                   ControleFragment.this.switchport4.setChecked(true);
-               }else{
-                   ControleFragment.this.state = "OFF";
-                   ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
-                   ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
-                   ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
-                   ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
-                   ControleFragment.this.switchport1.setChecked(false);
-                   ControleFragment.this.switchport2.setChecked(false);
-                   ControleFragment.this.switchport3.setChecked(false);
-                   ControleFragment.this.switchport4.setChecked(false);
-               }
-               Toast.makeText(getActivity(),ControleFragment.this.state,Toast.LENGTH_SHORT).show();
 
-           }
+        myHandler = new Handler();
+        myHandler.postDelayed(myRunnable, 500);
 
-       });
+
+        this.switchAllPorts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    ControleFragment.this.state = "ON";
+                    ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.switchport1.setChecked(true);
+                    ControleFragment.this.switchport2.setChecked(true);
+                    ControleFragment.this.switchport3.setChecked(true);
+                    ControleFragment.this.switchport4.setChecked(true);
+                    String val = "2";
+                    setChangeAllEtats(val);
+                } else {
+                    ControleFragment.this.state = "OFF";
+                    ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.switchport1.setChecked(false);
+                    ControleFragment.this.switchport2.setChecked(false);
+                    ControleFragment.this.switchport3.setChecked(false);
+                    ControleFragment.this.switchport4.setChecked(false);
+                    String val = "1";
+                    setChangeAllEtats(val);
+                }
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
 
         this.switchport1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                String val = "1";
+                if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                }else{
+                } else {
                     ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(),ControleFragment.this.state,Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()){
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(true);
-                }else if(!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()){
+                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(false);
                 }
+                setModifyEtat(val);
 
             }
 
@@ -139,86 +143,214 @@ public class ControleFragment extends Fragment {
         this.switchport2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                String val = "2";
+                if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                }else{
+                } else {
                     ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(),ControleFragment.this.state,Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()){
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(true);
-                }else if(!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()){
+                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(false);
                 }
+                setModifyEtat(val);
             }
 
         });
         this.switchport3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                String val = "3";
+                if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                }else{
+                } else {
                     ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(),ControleFragment.this.state,Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()){
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(true);
-                }else if(!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()){
+                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(false);
                 }
+                setModifyEtat(val);
             }
 
         });
         this.switchport4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                String val = "4";
+                if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
-                }else{
+                } else {
                     ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(),ControleFragment.this.state,Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()){
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(true);
-                }else if(!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()){
+                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
                     ControleFragment.this.switchAllPorts.setChecked(false);
                 }
+                setModifyEtat(val);
             }
 
         });
 
 
-        OkHttpClient client = new OkHttpClient();
-       // this.ipServ = "http://192.168.43.98";
+        return view;
 
-    /*    Request request = new Request.Builder().url(ipServ).build();
+    }
+
+    public void setAllEtatsInApp(String allEtats) {
+
+        String etats = allEtats;
+
+        switch (etats) {
+            case "0":
+                ControleFragment.this.switchAllPorts.setChecked(false);
+                break;
+            case "1":
+                ControleFragment.this.switchport1.setChecked(true);
+                break;
+
+            case "2":
+                ControleFragment.this.switchport2.setChecked(true);
+                break;
+            case "3":
+                ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(true);
+                break;
+
+            case "4":
+                ControleFragment.this.switchport3.setChecked(true);
+                break;
+            case "5":
+                ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(true);
+                break;
+
+            case "6":
+                ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(true);
+                break;
+            case "7":
+                ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(true);
+                break;
+
+            case "8":
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "9":
+                ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "10":
+                ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "11":
+                ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "12":
+                ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "13":
+                ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "14":
+                ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(true);
+                break;
+            case "15":
+                ControleFragment.this.switchAllPorts.setChecked(true);
+                break;
+            default:
+                Toast.makeText(getActivity(), "Erreur ! verifier l'ip du serveur ...", Toast.LENGTH_LONG).show();
+
+
+        }
+        Toast.makeText(getActivity(), "Ports mis à jours ...", Toast.LENGTH_LONG).show();
+
+    }
+
+    /* --- PROCESSUS TIMER --- */
+
+    private Handler myHandler;
+    private Runnable myRunnable = new Runnable() {
+        @Override
+        public void run() {
+
+            getIpByFile();
+            getEtatPort();
+
+            myHandler.postDelayed(this, 5000);
+        }
+    };
+
+
+    public void getIpByFile() {
+
+        FileInputStream inputStream = null;
+        try {
+            inputStream = getActivity().openFileInput("ipAttribue");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringb = new StringBuilder();
+        int content = 0;
+        while (true) {
+            try {
+                if (!((content = inputStream.read()) != -1)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.ipGet = String.valueOf(stringb.append((char) content));
+        }
+
+        ControleFragment.this.test.setText(ipGet);
+
+    }
+
+    public void getEtatPort() {
+        OkHttpClient client = new OkHttpClient();
+        String url = "http://" + this.ipGet + "/getPorts.php";
+
+        Request request = new Request.Builder().url(url).build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
-                Log.e(TAG, "get fail",e);
+                Log.e(TAG, "get fail", e);
             }
-
 
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
 
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            ControleFragment.this.test.setText(myResponse);
-                            Log.i(TAG, "ça marche");
+                            setAllEtatsInApp(myResponse);
+                            Log.i(TAG, "getEtatPort, connecté au serveur :  " + ControleFragment.this.ipGet);
                             Log.i(TAG, myResponse);
 
                         }
@@ -226,40 +358,75 @@ public class ControleFragment extends Fragment {
                 }
             }
         });
-
-    */
-
-
-       return view;
-
     }
 
-    public void getIpByFile(){
 
-        FileInputStream inputStream= null;
-        try {
-            inputStream = getActivity().openFileInput("ipAttribue");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        StringBuilder stringb= new StringBuilder();
-        int content = 0;
-        while (true){
-            try {
-                if (!((content=inputStream.read())!=-1)) break;
-            } catch (IOException e) {
+
+    public void setChangeAllEtats(String arg){
+        OkHttpClient client = new OkHttpClient();
+        String url = "http://" + this.ipGet + "/setAllPorts.php?value=" + arg;
+
+        Request request = new Request.Builder().url(url).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
+                Log.e(TAG, "get fail", e);
             }
-            this.ipGet = String.valueOf(stringb.append((char)content));
-        }
 
-        ControleFragment.this.test.setText(ipGet);
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            setAllEtatsInApp(myResponse);
+                            Log.i(TAG, "setAllPorts, connecté au serveur :  " + ControleFragment.this.ipGet);
+                            Log.i(TAG, myResponse);
+
+                        }
+                    });
+                }
+            }
+        });
     }
 
+    public void setModifyEtat(String arg){
+        OkHttpClient client = new OkHttpClient();
+        String url = "http://" + this.ipGet + "/setModifyEtat.php?value=" + arg;
+
+        Request request = new Request.Builder().url(url).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.e(TAG, "get fail", e);
+            }
 
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
 
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            setAllEtatsInApp(myResponse);
+                            Log.i(TAG, "setModifyEtat, connecté au serveur :  " + ControleFragment.this.ipGet);
+                            Log.i(TAG, myResponse);
+
+                        }
+                    });
+                }
+            }
+        });
+    }
 
 
 }
