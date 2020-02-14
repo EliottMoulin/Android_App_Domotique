@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         if (!isConnected()) {
-            Snackbar.make(findViewById(R.id.mainLayout), "Aucune connexion à internet...", Snackbar.LENGTH_LONG).show();
+            snackInternet();
             return;
         }
 
@@ -82,6 +82,25 @@ public class MainActivity extends AppCompatActivity{
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
+    private void snackInternet() {
+        final Snackbar snackbar = Snackbar
+                .make(findViewById(R.id.mainLayout), "No Internet Connectivity", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isConnected()) {
+                            Snackbar snackbar1 = Snackbar.make(view, "Connected to the Internet!", Snackbar.LENGTH_SHORT);
+                            snackbar1.show();
+                            return;
+                        }else{
+                            snackInternet();
+                        }
+
+                    }
+                });
+
+        snackbar.show();
+    }
 
     /* <-- VIEW MENU ITEM & DIALOG POPUP -->  */
 
@@ -92,9 +111,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
         switch (item.getItemId()) {
+
             case R.id.config_server:
+
 
                 final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_config_server, null);
@@ -124,13 +146,13 @@ public class MainActivity extends AppCompatActivity{
                             validate.setEnabled(false);
                         }
 
-
                     }
                 });
 
                 validate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
 
                         if(Patterns.IP_ADDRESS.matcher(ip.getText()).matches()) {
                             String ipSet = ip.getText().toString();

@@ -1,12 +1,17 @@
 package com.example.domotique.Fragments;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -49,6 +54,7 @@ public class ControleFragment extends Fragment {
 
 
     private TextView test;
+    private Snackbar barerror;
 
 
     @Override
@@ -61,6 +67,8 @@ public class ControleFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
         Log.i(TAG, "onCreateViewControle");
         View view = inflater.inflate(R.layout.fragment_controle, container, false);
 
@@ -116,11 +124,18 @@ public class ControleFragment extends Fragment {
             }
 
         });
+        this.switchport1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String val = "1";
+                setModifyEtat(val);
+            }
+        });
+
 
         this.switchport1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                String val = "1";
                 if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
@@ -129,17 +144,18 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
                 Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(true);
-                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(false);
-                }
-                setModifyEtat(val);
+
 
             }
 
         });
-
+        this.switchport2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String val = "2";
+                setModifyEtat(val);
+            }
+        });
         this.switchport2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -152,14 +168,16 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
                 Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(true);
-                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(false);
-                }
-                setModifyEtat(val);
+
             }
 
+        });
+        this.switchport3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String val = "3";
+                setModifyEtat(val);
+            }
         });
         this.switchport3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -173,14 +191,17 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
                 Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(true);
-                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(false);
-                }
-                setModifyEtat(val);
+
             }
 
+        });
+
+        this.switchport4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String val = "4";
+                setModifyEtat(val);
+            }
         });
         this.switchport4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -194,12 +215,7 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
                 Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
-                if (ControleFragment.this.switchport1.isChecked() && ControleFragment.this.switchport2.isChecked() && ControleFragment.this.switchport3.isChecked() && ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(true);
-                } else if (!ControleFragment.this.switchport1.isChecked() && !ControleFragment.this.switchport2.isChecked() && !ControleFragment.this.switchport3.isChecked() && !ControleFragment.this.switchport4.isChecked()) {
-                    ControleFragment.this.switchAllPorts.setChecked(false);
-                }
-                setModifyEtat(val);
+
             }
 
         });
@@ -281,11 +297,11 @@ public class ControleFragment extends Fragment {
                 ControleFragment.this.switchAllPorts.setChecked(true);
                 break;
             default:
-                Toast.makeText(getActivity(), "Erreur ! verifier l'ip du serveur ...", Toast.LENGTH_LONG).show();
+
 
 
         }
-        Toast.makeText(getActivity(), "Ports mis à jours ...", Toast.LENGTH_LONG).show();
+
 
     }
 
@@ -327,32 +343,54 @@ public class ControleFragment extends Fragment {
 
     }
 
+
     public void getEtatPort() {
         OkHttpClient client = new OkHttpClient();
         String url = "http://" + this.ipGet + "/getPorts.php";
 
         Request request = new Request.Builder().url(url).build();
-
+        
+        final boolean[] test = {false};
+        
+        
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
                 Log.e(TAG, "get fail", e);
+                setErrorServer();
             }
 
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(final Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
 
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            setAllEtatsInApp(myResponse);
-                            Log.i(TAG, "getEtatPort, connecté au serveur :  " + ControleFragment.this.ipGet);
-                            Log.i(TAG, myResponse);
+                            int i = 0;
+                            do {
 
+                                if (!myResponse.equals(Integer.toString(i))){
+                                     test[0] = false;
+
+                                }else{
+                                    test[0] = true;
+                                /*    MenuItem item = getActivity().findViewById(R.id.config_server);
+                                    item.setIcon(R.drawable.ic_wifi_toolbar_foreground); */
+                                    setAllEtatsInApp(myResponse);
+                                    Log.i(TAG, "getEtatPort, connecté au serveur :  " + ControleFragment.this.ipGet);
+                                    Log.i(TAG, myResponse);
+                                }
+                                i++;
+
+                            }while (i <= 15 && test[0] == false );
+
+                            if (!test[0]){
+                                setErrorServer();
+                                ControleFragment.this.switchAllPorts.setChecked(false);
+                            }
                         }
                     });
                 }
@@ -360,6 +398,28 @@ public class ControleFragment extends Fragment {
         });
     }
 
+
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            // Do something that differs the Activity's menu here
+            super.onCreateOptionsMenu(menu, inflater);
+        }
+
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.config_server:
+                    item.setIcon(R.drawable.ic_wifi_toolbar_foreground);
+                    return false;
+            }
+
+            return false;
+        }
+
+
+
+    private void setErrorServer() {
+
+        this.barerror.make(getActivity().findViewById(R.id.mainLayout), "Verify ip Server ...", Snackbar.LENGTH_INDEFINITE).show();
+    }
 
 
     public void setChangeAllEtats(String arg){
