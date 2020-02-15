@@ -1,15 +1,16 @@
 package com.example.domotique.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import com.example.domotique.Fragments.CameraFragment;
 import com.example.domotique.Fragments.ControleFragment;
 import com.example.domotique.R;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity{
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private String ipTitle;
 
 
 
@@ -62,14 +65,12 @@ public class MainActivity extends AppCompatActivity{
         tabLayout = findViewById(R.id.mytabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        
-
 
         if (!isConnected()) {
             snackInternet();
             return;
         }
-
+        getConnexionStateByFile();
 
     }
 
@@ -102,13 +103,65 @@ public class MainActivity extends AppCompatActivity{
         snackbar.show();
     }
 
+    public String getConnexionStateByFile(){
+        FileInputStream inputStream = null;
+        String result = null;
+        try {
+            inputStream = this.openFileInput("stateConnexion");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringb = new StringBuilder();
+        int content = 0;
+        while (true) {
+            try {
+                if (!((content = inputStream.read()) != -1)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            result = String.valueOf(stringb.append((char) content));
+        }
+        return result;
+    }
+
+    public String getIpByFile() {
+
+        FileInputStream inputStream = null;
+        String result = null;
+        try {
+            inputStream = this.openFileInput("ipAttribue");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringb = new StringBuilder();
+        int content = 0;
+        while (true) {
+            try {
+                if (!((content = inputStream.read()) != -1)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            result = String.valueOf(stringb.append((char) content));
+        }
+
+        return result;
+
+
+    }
     /* <-- VIEW MENU ITEM & DIALOG POPUP -->  */
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        if (isConnected() && getConnexionStateByFile().equals("1")){
+            menu.getItem(0).setIcon(R.drawable.ic_wifi_toolbar_foreground);
+        }
+        menu.getItem(0).setTitle(getIpByFile());
+
         return true;
     }
+
 
 
     public boolean onOptionsItemSelected(final MenuItem item) {
@@ -116,6 +169,8 @@ public class MainActivity extends AppCompatActivity{
         switch (item.getItemId()) {
 
             case R.id.config_server:
+
+
 
 
                 final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -172,7 +227,19 @@ public class MainActivity extends AppCompatActivity{
                                 e.printStackTrace();
                             }
 
-                            Snackbar.make(findViewById(R.id.mainLayout), "Connecté à "+ipSet , Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(findViewById(R.id.mainLayout), "Connexion à  "+ipSet+" ..." , Snackbar.LENGTH_LONG).show();
+
+
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    Intent intent = new Intent(MainActivity.this,MainActivity.class);
+
+                                    MainActivity.this.startActivity(intent);
+                                    MainActivity.this.finish();
+                                }
+                            },2050);
                             dialog.dismiss();
                         }
                         else {

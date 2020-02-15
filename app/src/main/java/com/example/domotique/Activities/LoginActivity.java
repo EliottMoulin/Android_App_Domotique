@@ -59,16 +59,32 @@ public class LoginActivity extends AppCompatActivity {
         /* --- CREATION DU FICHIER DE STOCKAGE DE IP SERVER --- */
 
         FileInputStream inputStream = null;
+        FileInputStream inputStream1 = null;
         try {
             inputStream = this.openFileInput("ipAttribue");
+            inputStream1 = this.openFileInput("stateConnexion");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
 
         }
+
+
         if (inputStream == null){
             FileOutputStream output ;
             try {
                 output = openFileOutput("ipAttribue", MODE_PRIVATE);
+                if(output != null)
+                    output.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (inputStream1 == null){
+            FileOutputStream output ;
+            try {
+                output = openFileOutput("stateConnexion", MODE_PRIVATE);
                 if(output != null)
                     output.close();
             } catch (FileNotFoundException e) {

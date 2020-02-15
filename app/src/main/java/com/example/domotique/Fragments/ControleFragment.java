@@ -1,7 +1,11 @@
 package com.example.domotique.Fragments;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
@@ -21,10 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.domotique.Activities.MainActivity;
 import com.example.domotique.R;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -32,6 +38,8 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class ControleFragment extends Fragment {
@@ -52,7 +60,7 @@ public class ControleFragment extends Fragment {
 
     private String ipGet;
 
-
+    private MainActivity activity;
     private TextView test;
     private Snackbar barerror;
 
@@ -90,6 +98,7 @@ public class ControleFragment extends Fragment {
         myHandler = new Handler();
         myHandler.postDelayed(myRunnable, 500);
 
+        getEtatPort();
 
         this.switchAllPorts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -232,76 +241,118 @@ public class ControleFragment extends Fragment {
         switch (etats) {
             case "0":
                 ControleFragment.this.switchAllPorts.setChecked(false);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport2.setChecked(false);
+                ControleFragment.this.switchport3.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
             case "1":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(false);
+                ControleFragment.this.switchport3.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
 
             case "2":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport3.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
             case "3":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
                 ControleFragment.this.switchport2.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
 
             case "4":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport2.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
             case "5":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
                 ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
 
             case "6":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport2.setChecked(true);
                 ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
             case "7":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
                 ControleFragment.this.switchport2.setChecked(true);
                 ControleFragment.this.switchport3.setChecked(true);
+                ControleFragment.this.switchport4.setChecked(false);
                 break;
 
             case "8":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport2.setChecked(false);
+                ControleFragment.this.switchport3.setChecked(false);
                 break;
             case "9":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(false);
+                ControleFragment.this.switchport3.setChecked(false);
                 break;
             case "10":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport2.setChecked(true);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport3.setChecked(false);
                 break;
             case "11":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
                 ControleFragment.this.switchport2.setChecked(true);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport3.setChecked(false);
                 break;
             case "12":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport3.setChecked(true);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
+                ControleFragment.this.switchport2.setChecked(false);
                 break;
             case "13":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport1.setChecked(true);
                 ControleFragment.this.switchport3.setChecked(true);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport2.setChecked(false);
                 break;
             case "14":
+                ControleFragment.this.switchAllPorts.setChecked(false);
                 ControleFragment.this.switchport2.setChecked(true);
                 ControleFragment.this.switchport3.setChecked(true);
                 ControleFragment.this.switchport4.setChecked(true);
+                ControleFragment.this.switchport1.setChecked(false);
                 break;
             case "15":
                 ControleFragment.this.switchAllPorts.setChecked(true);
                 break;
-            default:
-
-
 
         }
-
 
     }
 
@@ -315,7 +366,7 @@ public class ControleFragment extends Fragment {
             getIpByFile();
             getEtatPort();
 
-            myHandler.postDelayed(this, 5000);
+            myHandler.postDelayed(this, 2000);
         }
     };
 
@@ -339,7 +390,7 @@ public class ControleFragment extends Fragment {
             this.ipGet = String.valueOf(stringb.append((char) content));
         }
 
-        ControleFragment.this.test.setText(ipGet);
+
 
     }
 
@@ -357,7 +408,6 @@ public class ControleFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "get fail", e);
-                setErrorServer();
             }
 
 
@@ -371,7 +421,6 @@ public class ControleFragment extends Fragment {
                         public void run() {
                             int i = 0;
                             do {
-
                                 if (!myResponse.equals(Integer.toString(i))){
                                      test[0] = false;
 
@@ -388,8 +437,19 @@ public class ControleFragment extends Fragment {
                             }while (i <= 15 && test[0] == false );
 
                             if (!test[0]){
-                                setErrorServer();
                                 ControleFragment.this.switchAllPorts.setChecked(false);
+                                ControleFragment.this.switchport1.setChecked(false);
+                                ControleFragment.this.switchport2.setChecked(false);
+                                ControleFragment.this.switchport3.setChecked(false);
+                                ControleFragment.this.switchport4.setChecked(false);
+                                setErrorServer();
+                                setStateConnByFile("0");
+
+                            }else{
+                                if ( ControleFragment.this.barerror != null){
+                                    ControleFragment.this.barerror.dismiss();
+                                }
+                                setStateConnByFile("1");
                             }
                         }
                     });
@@ -398,27 +458,55 @@ public class ControleFragment extends Fragment {
         });
     }
 
-
-        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-            // Do something that differs the Activity's menu here
-            super.onCreateOptionsMenu(menu, inflater);
+    private void setStateConnByFile(String val) {
+        FileOutputStream output = null;
+        try {
+            output = getActivity().openFileOutput("stateConnexion", MODE_PRIVATE);
+            output.write(val.getBytes());
+            if(output != null)
+                output.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        public boolean onOptionsItemSelected(MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.config_server:
-                    item.setIcon(R.drawable.ic_wifi_toolbar_foreground);
-                    return false;
-            }
-
-            return false;
-        }
+    }
 
 
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
+    private void snackInternet() {
+
+        final Snackbar snackbar = Snackbar
+                .make(getActivity().findViewById(R.id.mainLayout), "No Internet Connectivity", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isConnected()) {
+                            Snackbar snackbar1 = Snackbar.make(view, "Connected to the Internet!", Snackbar.LENGTH_SHORT);
+                            snackbar1.show();
+                            return;
+                        }else{
+                            snackInternet();
+                        }
+
+                    }
+                });
+
+        snackbar.show();
+    }
 
     private void setErrorServer() {
+        if (isConnected()){
+            this.barerror.make(getActivity().findViewById(R.id.mainLayout), "Verify ip Server ...", Snackbar.LENGTH_LONG).show();
+        }else{
+            snackInternet();
+        }
 
-        this.barerror.make(getActivity().findViewById(R.id.mainLayout), "Verify ip Server ...", Snackbar.LENGTH_INDEFINITE).show();
     }
 
 
@@ -440,16 +528,18 @@ public class ControleFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
+                    if (getActivity() != null){
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                setAllEtatsInApp(myResponse);
+                                Log.i(TAG, "setAllPorts, connecté au serveur :  " + ControleFragment.this.ipGet);
+                                Log.i(TAG, myResponse);
 
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            setAllEtatsInApp(myResponse);
-                            Log.i(TAG, "setAllPorts, connecté au serveur :  " + ControleFragment.this.ipGet);
-                            Log.i(TAG, myResponse);
+                            }
+                        });
+                    }
 
-                        }
-                    });
                 }
             }
         });
