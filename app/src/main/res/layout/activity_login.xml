@@ -8,16 +8,16 @@
     tools:context=".Activities.LoginActivity">
 
 
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/mytoolbarLog"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mytoolbarLog"
+        android:layout_width="417dp"
+        android:layout_height="24dp"
 
 
-            />
-
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/numberPass"
@@ -30,10 +30,10 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.534" />
 
     <Button
         android:id="@+id/buttonPass"
@@ -54,17 +54,16 @@
         app:layout_constraintTop_toBottomOf="@+id/numberPass"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="21dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mytoolbarLog"
-        app:layout_constraintEnd_toEndOf="@+id/mytoolbarLog"
-        app:layout_constraintStart_toStartOf="@+id/mytoolbarLog"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="318dp"
+        android:layout_height="289dp"
+        android:layout_marginBottom="320dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo1" />
 
 
 </android.support.constraint.ConstraintLayout>
