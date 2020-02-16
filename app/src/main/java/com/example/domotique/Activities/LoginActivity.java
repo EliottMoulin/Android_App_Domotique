@@ -45,8 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable number) {
-                if(number.length() < 4)
-                {
+                if (number.length() < 4) {
                     LoginActivity.this.validate.setEnabled(false);
                 }
             }
@@ -69,11 +68,11 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-        if (inputStream == null){
-            FileOutputStream output ;
+        if (inputStream == null) {
+            FileOutputStream output;
             try {
                 output = openFileOutput("ipAttribue", MODE_PRIVATE);
-                if(output != null)
+                if (output != null)
                     output.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -81,11 +80,11 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (inputStream1 == null){
-            FileOutputStream output ;
+        if (inputStream1 == null) {
+            FileOutputStream output;
             try {
                 output = openFileOutput("stateConnexion", MODE_PRIVATE);
-                if(output != null)
+                if (output != null)
                     output.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -97,49 +96,43 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         Log.i(TAG, "onStart");
         super.onStart();
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         Log.i(TAG, "onResume");
         super.onResume();
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         Log.i(TAG, "onPause");
         super.onPause();
     }
 
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         Log.i(TAG, "onStop");
         super.onStop();
     }
 
     @Override
-    protected void onRestart()
-    {
+    protected void onRestart() {
         Log.i(TAG, "onRestart");
         super.onRestart();
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         Log.i(TAG, "onDestroy");
         super.onDestroy();
     }
 
-    private void startMainActivity(View view){
-        Log.d(TAG,"startMainActivity");
+    private void startMainActivity(View view) {
+        Log.d(TAG, "startMainActivity");
         Intent intent = new Intent();
         intent.setClass(this, MainActivity.class);
 
@@ -148,22 +141,21 @@ public class LoginActivity extends AppCompatActivity {
         super.finish();
     }
 
-    public void validatePassword(View view){
+    public void validatePassword(View view) {
 
-        Log.d(TAG,"validatePassword");
+        Log.d(TAG, "validatePassword");
 
         //Toast.makeText(this,this.password.getText(),Toast.LENGTH_LONG).show();
         String pass = "2121";
-        if ( this.password.getText().toString().equals(pass)){
-            Toast.makeText(this,"Bienvenue !",Toast.LENGTH_SHORT).show();
+        if (this.password.getText().toString().equals(pass)) {
+            Toast.makeText(this, "Bienvenue !", Toast.LENGTH_SHORT).show();
             startMainActivity(view);
-        }else {
+        } else {
             this.password.setText("");
             this.password.setError("Password incorect !");
         }
 
     }
-
 
 
 }

@@ -1,9 +1,7 @@
 package com.example.domotique.Fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -13,9 +11,7 @@ import android.support.v4.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -25,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.domotique.Activities.MainActivity;
 import com.example.domotique.R;
 
 import java.io.FileInputStream;
@@ -60,9 +55,9 @@ public class ControleFragment extends Fragment {
 
     private String ipGet;
 
-    private MainActivity activity;
     private TextView test;
     private Snackbar barerror;
+    private boolean firstTime = true;
 
 
     @Override
@@ -95,10 +90,11 @@ public class ControleFragment extends Fragment {
         this.test = view.findViewById(R.id.test);
 
 
-        myHandler = new Handler();
-        myHandler.postDelayed(myRunnable, 500);
 
-        getEtatPort();
+        /*--- DELAIS ENTRE LES REQUETTES GET ---*/
+        myHandler = new Handler();
+        myHandler.postDelayed(myRunnable, 1100);
+
 
         this.switchAllPorts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -228,7 +224,6 @@ public class ControleFragment extends Fragment {
             }
 
         });
-
 
         return view;
 
@@ -366,7 +361,7 @@ public class ControleFragment extends Fragment {
             getIpByFile();
             getEtatPort();
 
-            myHandler.postDelayed(this, 2000);
+            myHandler.postDelayed(this, 1121);
         }
     };
 
@@ -391,7 +386,6 @@ public class ControleFragment extends Fragment {
         }
 
 
-
     }
 
 
@@ -400,16 +394,28 @@ public class ControleFragment extends Fragment {
         String url = "http://" + this.ipGet + "/getPorts.php";
 
         Request request = new Request.Builder().url(url).build();
-        
+
         final boolean[] test = {false};
-        
-        
+
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "get fail", e);
-            }
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (getActivity() != null) {
+                                setStateConnByFile("0");
+                                setErrorServer();
 
+                            }
+                        }
+                    });
+                }
+
+            }
 
             @Override
             public void onResponse(final Call call, Response response) throws IOException {
@@ -421,35 +427,35 @@ public class ControleFragment extends Fragment {
                         public void run() {
                             int i = 0;
                             do {
-                                if (!myResponse.equals(Integer.toString(i))){
-                                     test[0] = false;
+                                if (!myResponse.equals(Integer.toString(i))) {
+                                    test[0] = false;
 
-                                }else{
+                                } else {
                                     test[0] = true;
-                                /*    MenuItem item = getActivity().findViewById(R.id.config_server);
-                                    item.setIcon(R.drawable.ic_wifi_toolbar_foreground); */
-                                    setAllEtatsInApp(myResponse);
                                     Log.i(TAG, "getEtatPort, connecté au serveur :  " + ControleFragment.this.ipGet);
                                     Log.i(TAG, myResponse);
                                 }
                                 i++;
 
-                            }while (i <= 15 && test[0] == false );
+                            } while (i <= 15 && test[0] == false);
 
-                            if (!test[0]){
-                                ControleFragment.this.switchAllPorts.setChecked(false);
-                                ControleFragment.this.switchport1.setChecked(false);
-                                ControleFragment.this.switchport2.setChecked(false);
-                                ControleFragment.this.switchport3.setChecked(false);
-                                ControleFragment.this.switchport4.setChecked(false);
+                            if (!test[0]) {
                                 setErrorServer();
                                 setStateConnByFile("0");
 
-                            }else{
-                                if ( ControleFragment.this.barerror != null){
+                            } else {
+                                setStateConnByFile("1");
+                                if (ControleFragment.this.barerror != null) {
                                     ControleFragment.this.barerror.dismiss();
                                 }
-                                setStateConnByFile("1");
+                                if (ControleFragment.this.firstTime) {
+                                    animationFirstTime();
+                                } else {
+                                    setAllEtatsInApp(myResponse);
+                                }
+
+                                // TODO : Changer l'icon action BAR si POSSIBLE à la place d'utiliser un fichier
+                                // TODO : Mettre l'icon : "R.drawable.ic_wifi_toolbar_foreground"
                             }
                         }
                     });
@@ -463,7 +469,7 @@ public class ControleFragment extends Fragment {
         try {
             output = getActivity().openFileOutput("stateConnexion", MODE_PRIVATE);
             output.write(val.getBytes());
-            if(output != null)
+            if (output != null)
                 output.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -479,6 +485,7 @@ public class ControleFragment extends Fragment {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
+
     private void snackInternet() {
 
         final Snackbar snackbar = Snackbar
@@ -490,7 +497,7 @@ public class ControleFragment extends Fragment {
                             Snackbar snackbar1 = Snackbar.make(view, "Connected to the Internet!", Snackbar.LENGTH_SHORT);
                             snackbar1.show();
                             return;
-                        }else{
+                        } else {
                             snackInternet();
                         }
 
@@ -501,16 +508,22 @@ public class ControleFragment extends Fragment {
     }
 
     private void setErrorServer() {
-        if (isConnected()){
+
+        if (isConnected()) {
             this.barerror.make(getActivity().findViewById(R.id.mainLayout), "Verify ip Server ...", Snackbar.LENGTH_LONG).show();
-        }else{
+        } else {
             snackInternet();
         }
+        ControleFragment.this.switchAllPorts.setChecked(false);
+        ControleFragment.this.switchport1.setChecked(false);
+        ControleFragment.this.switchport2.setChecked(false);
+        ControleFragment.this.switchport3.setChecked(false);
+        ControleFragment.this.switchport4.setChecked(false);
 
     }
 
 
-    public void setChangeAllEtats(String arg){
+    public void setChangeAllEtats(String arg) {
         OkHttpClient client = new OkHttpClient();
         String url = "http://" + this.ipGet + "/setAllPorts.php?value=" + arg;
 
@@ -528,7 +541,7 @@ public class ControleFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
-                    if (getActivity() != null){
+                    if (getActivity() != null) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -545,7 +558,7 @@ public class ControleFragment extends Fragment {
         });
     }
 
-    public void setModifyEtat(String arg){
+    public void setModifyEtat(String arg) {
         OkHttpClient client = new OkHttpClient();
         String url = "http://" + this.ipGet + "/setModifyEtat.php?value=" + arg;
 
@@ -576,6 +589,93 @@ public class ControleFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void animationFirstTime() {
+        this.firstTime = false;
+
+        /* --- 1 --- */
+        if (getActivity() != null) {
+            this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+
+        }
+
+
+        /* --- 2 --- */
+        if (getActivity() != null) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+
+                    ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+
+                }
+            }, 200);
+        }
+
+
+        /* --- 3 --- */
+        if (getActivity() != null) {
+            Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                public void run() {
+
+                    ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+
+                }
+            }, 400);
+        }
+
+
+        /* --- 4 --- */
+        if (getActivity() != null) {
+            Handler handler2 = new Handler();
+            handler2.postDelayed(new Runnable() {
+                public void run() {
+
+                    ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+
+                }
+            }, 600);
+        }
+
+
+        /* --- 5 --- */
+        if (getActivity() != null) {
+            Handler handler3 = new Handler();
+            handler3.postDelayed(new Runnable() {
+                public void run() {
+
+                    ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+
+                    ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+                    ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
+
+                }
+            }, 800);
+        }
+
+        /* --- 6 --- */
+        if (getActivity() != null) {
+            Handler handler4 = new Handler();
+            handler4.postDelayed(new Runnable() {
+                public void run() {
+
+                    ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+                    ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
+
+                }
+            }, 1000);
+        }
+
+
     }
 
 

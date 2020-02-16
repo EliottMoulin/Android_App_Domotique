@@ -1,5 +1,6 @@
 package com.example.domotique.Activities;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -24,7 +25,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.domotique.Fragments.CameraFragment;
 import com.example.domotique.Fragments.ControleFragment;
@@ -38,15 +38,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private final static String TAG = MainActivity.class.getName();
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private String ipTitle;
-
 
 
     @Override
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity{
         toolbar = (Toolbar) findViewById(R.id.mytoolbar);
         setSupportActionBar(toolbar);
 
-        viewPager =  findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.viewpager);
         setViewPager(viewPager);
 
         tabLayout = findViewById(R.id.mytabs);
@@ -72,6 +70,7 @@ public class MainActivity extends AppCompatActivity{
         }
         getConnexionStateByFile();
 
+
     }
 
 
@@ -83,6 +82,7 @@ public class MainActivity extends AppCompatActivity{
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
+
     private void snackInternet() {
         final Snackbar snackbar = Snackbar
                 .make(findViewById(R.id.mainLayout), "No Internet Connectivity", Snackbar.LENGTH_INDEFINITE)
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity{
                             Snackbar snackbar1 = Snackbar.make(view, "Connected to the Internet!", Snackbar.LENGTH_SHORT);
                             snackbar1.show();
                             return;
-                        }else{
+                        } else {
                             snackInternet();
                         }
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity{
         snackbar.show();
     }
 
-    public String getConnexionStateByFile(){
+    public String getConnexionStateByFile() {
         FileInputStream inputStream = null;
         String result = null;
         try {
@@ -154,14 +154,14 @@ public class MainActivity extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        if (isConnected() && getConnexionStateByFile().equals("1")){
+        if (isConnected() && getConnexionStateByFile().equals("1")) {
             menu.getItem(0).setIcon(R.drawable.ic_wifi_toolbar_foreground);
         }
         menu.getItem(0).setTitle(getIpByFile());
 
+
         return true;
     }
-
 
 
     public boolean onOptionsItemSelected(final MenuItem item) {
@@ -169,8 +169,6 @@ public class MainActivity extends AppCompatActivity{
         switch (item.getItemId()) {
 
             case R.id.config_server:
-
-
 
 
                 final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -196,8 +194,7 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void afterTextChanged(Editable text) {
 
-                        if(text.length() == 0)
-                        {
+                        if (text.length() == 0) {
                             validate.setEnabled(false);
                         }
 
@@ -209,17 +206,15 @@ public class MainActivity extends AppCompatActivity{
                     public void onClick(View v) {
 
 
-                        if(Patterns.IP_ADDRESS.matcher(ip.getText()).matches()) {
+                        if (Patterns.IP_ADDRESS.matcher(ip.getText()).matches()) {
+
                             String ipSet = ip.getText().toString();
-
-
                             /* --- STOCKAGE DANS FILE --- */
-
                             FileOutputStream output = null;
                             try {
                                 output = openFileOutput("ipAttribue", MODE_PRIVATE);
                                 output.write(ipSet.getBytes());
-                                if(output != null)
+                                if (output != null)
                                     output.close();
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
@@ -227,22 +222,21 @@ public class MainActivity extends AppCompatActivity{
                                 e.printStackTrace();
                             }
 
-                            Snackbar.make(findViewById(R.id.mainLayout), "Connexion à  "+ipSet+" ..." , Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(findViewById(R.id.mainLayout), "Connexion à  " + ipSet + " ...   | Wait a second", Snackbar.LENGTH_LONG).show();
 
 
-
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
+                            Handler handler1 = new Handler();
+                            handler1.postDelayed(new Runnable() {
                                 public void run() {
-                                    Intent intent = new Intent(MainActivity.this,MainActivity.class);
+
+                                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
 
                                     MainActivity.this.startActivity(intent);
                                     MainActivity.this.finish();
                                 }
-                            },2050);
+                            }, 4000);
                             dialog.dismiss();
-                        }
-                        else {
+                        } else {
                             ip.setError(MainActivity.super.getString(R.string.ip_not_valid));
                         }
 
@@ -256,14 +250,14 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-   /* <-- VIEW PAGE ONGLETS -->  */
+    /* <-- VIEW PAGE ONGLETS -->  */
 
     private void setViewPager(ViewPager viewPager) {
-            Log.i(TAG, "setViewPager");
-            ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-            adapter.addFragment(new ControleFragment(), "Node Control");
-            adapter.addFragment(new CameraFragment(), "Camera View");
-            viewPager.setAdapter(adapter);
+        Log.i(TAG, "setViewPager");
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new ControleFragment(), "Node Control");
+        adapter.addFragment(new CameraFragment(), "Camera View");
+        viewPager.setAdapter(adapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
