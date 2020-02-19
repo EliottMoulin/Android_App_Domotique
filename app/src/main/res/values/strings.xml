@@ -6,7 +6,7 @@
     <string name="port2" >Port 2</string>
     <string name="port3" >Port 3</string>
     <string name="port4" >Port 4</string>
-    <string name="inputIpConfig">X.X.X.X</string>
+    <string name="inputIpConfig">x.x.x.x (IP server)</string>
     <string name="textIpConfig">Saisissez l\'adresse IP de votre server</string>
     <string name="validate">Validé</string>
     <string name="ip_not_valid">IP address not valid&#8230;</string>

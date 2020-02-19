@@ -6,11 +6,9 @@
     >
 
     <item android:id="@+id/config_server"
-        android:icon="@drawable/ic_no_wifi_toolbar_foreground"
+        android:icon="@drawable/ic_wifi_toolbar_foreground"
         android:title="configure Ip Server"
         app:showAsAction="always">
     </item>
-
-
 
 </menu>

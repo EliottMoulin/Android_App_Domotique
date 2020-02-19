@@ -2,11 +2,9 @@ package com.example.domotique.Activities;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private String ipTitle;
+
 
 
     @Override
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.mytoolbar);
+        toolbar = findViewById(R.id.mytoolbar);
         setSupportActionBar(toolbar);
 
         viewPager = findViewById(R.id.viewpager);
@@ -68,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             snackInternet();
             return;
         }
-        getConnexionStateByFile();
 
 
     }
@@ -103,26 +100,6 @@ public class MainActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    public String getConnexionStateByFile() {
-        FileInputStream inputStream = null;
-        String result = null;
-        try {
-            inputStream = this.openFileInput("stateConnexion");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        StringBuilder stringb = new StringBuilder();
-        int content = 0;
-        while (true) {
-            try {
-                if (!((content = inputStream.read()) != -1)) break;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            result = String.valueOf(stringb.append((char) content));
-        }
-        return result;
-    }
 
     public String getIpByFile() {
 
@@ -154,11 +131,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        if (isConnected() && getConnexionStateByFile().equals("1")) {
-            menu.getItem(0).setIcon(R.drawable.ic_wifi_toolbar_foreground);
-        }
         menu.getItem(0).setTitle(getIpByFile());
-
 
         return true;
     }
@@ -225,16 +198,6 @@ public class MainActivity extends AppCompatActivity {
                             Snackbar.make(findViewById(R.id.mainLayout), "Connexion à  " + ipSet + " ...   | Wait a second", Snackbar.LENGTH_LONG).show();
 
 
-                            Handler handler1 = new Handler();
-                            handler1.postDelayed(new Runnable() {
-                                public void run() {
-
-                                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
-
-                                    MainActivity.this.startActivity(intent);
-                                    MainActivity.this.finish();
-                                }
-                            }, 4000);
                             dialog.dismiss();
                         } else {
                             ip.setError(MainActivity.super.getString(R.string.ip_not_valid));

@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -20,12 +18,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.domotique.R;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -33,8 +29,6 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 public class ControleFragment extends Fragment {
@@ -58,6 +52,7 @@ public class ControleFragment extends Fragment {
     private TextView test;
     private Snackbar barerror;
     private boolean firstTime = true;
+    private boolean internet = true;
 
 
     @Override
@@ -93,9 +88,20 @@ public class ControleFragment extends Fragment {
 
         /*--- DELAIS ENTRE LES REQUETTES GET ---*/
         myHandler = new Handler();
-        myHandler.postDelayed(myRunnable, 1100);
+        myHandler.postDelayed(myRunnable, 500);
 
-
+        this.switchAllPorts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ControleFragment.this.switchAllPorts.isChecked()) {
+                    String val = "2";
+                    setChangeAllEtats(val);
+                } else {
+                    String val = "1";
+                    setChangeAllEtats(val);
+                }
+            }
+        });
         this.switchAllPorts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -109,8 +115,7 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.switchport2.setChecked(true);
                     ControleFragment.this.switchport3.setChecked(true);
                     ControleFragment.this.switchport4.setChecked(true);
-                    String val = "2";
-                    setChangeAllEtats(val);
+
                 } else {
                     ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
@@ -121,8 +126,7 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.switchport2.setChecked(false);
                     ControleFragment.this.switchport3.setChecked(false);
                     ControleFragment.this.switchport4.setChecked(false);
-                    String val = "1";
-                    setChangeAllEtats(val);
+
                 }
                 Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
 
@@ -164,7 +168,6 @@ public class ControleFragment extends Fragment {
         this.switchport2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                String val = "2";
                 if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
@@ -187,7 +190,6 @@ public class ControleFragment extends Fragment {
         this.switchport3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                String val = "3";
                 if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
@@ -211,7 +213,6 @@ public class ControleFragment extends Fragment {
         this.switchport4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                String val = "4";
                 if (b) {
                     ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
@@ -361,7 +362,7 @@ public class ControleFragment extends Fragment {
             getIpByFile();
             getEtatPort();
 
-            myHandler.postDelayed(this, 1121);
+            myHandler.postDelayed(this, 2021);
         }
     };
 
@@ -388,7 +389,6 @@ public class ControleFragment extends Fragment {
 
     }
 
-
     public void getEtatPort() {
         OkHttpClient client = new OkHttpClient();
         String url = "http://" + this.ipGet + "/getPorts.php";
@@ -396,7 +396,6 @@ public class ControleFragment extends Fragment {
         Request request = new Request.Builder().url(url).build();
 
         final boolean[] test = {false};
-
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -407,8 +406,12 @@ public class ControleFragment extends Fragment {
                         @Override
                         public void run() {
                             if (getActivity() != null) {
-                                setStateConnByFile("0");
-                                setErrorServer();
+
+                                if (!isConnected() && ControleFragment.this.internet) {
+                                    snackInternet();
+                                } else {
+                                    setErrorServer();
+                                }
 
                             }
                         }
@@ -441,10 +444,8 @@ public class ControleFragment extends Fragment {
 
                             if (!test[0]) {
                                 setErrorServer();
-                                setStateConnByFile("0");
-
                             } else {
-                                setStateConnByFile("1");
+
                                 if (ControleFragment.this.barerror != null) {
                                     ControleFragment.this.barerror.dismiss();
                                 }
@@ -453,7 +454,6 @@ public class ControleFragment extends Fragment {
                                 } else {
                                     setAllEtatsInApp(myResponse);
                                 }
-
                                 // TODO : Changer l'icon action BAR si POSSIBLE à la place d'utiliser un fichier
                                 // TODO : Mettre l'icon : "R.drawable.ic_wifi_toolbar_foreground"
                             }
@@ -462,20 +462,6 @@ public class ControleFragment extends Fragment {
                 }
             }
         });
-    }
-
-    private void setStateConnByFile(String val) {
-        FileOutputStream output = null;
-        try {
-            output = getActivity().openFileOutput("stateConnexion", MODE_PRIVATE);
-            output.write(val.getBytes());
-            if (output != null)
-                output.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -487,23 +473,22 @@ public class ControleFragment extends Fragment {
     }
 
     private void snackInternet() {
-
+        this.internet = false;
         final Snackbar snackbar = Snackbar
                 .make(getActivity().findViewById(R.id.mainLayout), "No Internet Connectivity", Snackbar.LENGTH_INDEFINITE)
                 .setAction("Retry", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (isConnected()) {
+                            ControleFragment.this.internet = true;
                             Snackbar snackbar1 = Snackbar.make(view, "Connected to the Internet!", Snackbar.LENGTH_SHORT);
                             snackbar1.show();
                             return;
                         } else {
                             snackInternet();
                         }
-
                     }
                 });
-
         snackbar.show();
     }
 
@@ -511,15 +496,12 @@ public class ControleFragment extends Fragment {
 
         if (isConnected()) {
             this.barerror.make(getActivity().findViewById(R.id.mainLayout), "Verify ip Server ...", Snackbar.LENGTH_LONG).show();
-        } else {
-            snackInternet();
         }
         ControleFragment.this.switchAllPorts.setChecked(false);
         ControleFragment.this.switchport1.setChecked(false);
         ControleFragment.this.switchport2.setChecked(false);
         ControleFragment.this.switchport3.setChecked(false);
         ControleFragment.this.switchport4.setChecked(false);
-
     }
 
 

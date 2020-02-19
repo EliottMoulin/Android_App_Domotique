@@ -61,11 +61,15 @@ public class LoginActivity extends AppCompatActivity {
         FileInputStream inputStream1 = null;
         try {
             inputStream = this.openFileInput("ipAttribue");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
             inputStream1 = this.openFileInput("stateConnexion");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-
         }
+
 
 
         if (inputStream == null) {
@@ -81,11 +85,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         if (inputStream1 == null) {
-            FileOutputStream output;
+            FileOutputStream output1;
             try {
-                output = openFileOutput("stateConnexion", MODE_PRIVATE);
-                if (output != null)
-                    output.close();
+                output1 = openFileOutput("stateConnexion", MODE_PRIVATE);
+                if (output1 != null)
+                    output1.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
