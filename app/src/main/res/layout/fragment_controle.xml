@@ -87,7 +87,7 @@
         android:id="@+id/imgLed1"
         android:layout_width="55dp"
         android:layout_height="86dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgLed2"
+        android:layout_marginStart="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         app:srcCompat="@drawable/led_down" />
@@ -96,8 +96,8 @@
         android:id="@+id/imgLed2"
         android:layout_width="55dp"
         android:layout_height="86dp"
-        android:layout_marginEnd="193dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/imgLed1"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         app:srcCompat="@drawable/led_down" />
 
@@ -105,8 +105,8 @@
         android:id="@+id/imgLed3"
         android:layout_width="55dp"
         android:layout_height="86dp"
-        android:layout_marginStart="193dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/imgLed2"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         app:srcCompat="@drawable/led_down" />
 
@@ -114,7 +114,10 @@
         android:id="@+id/imgLed4"
         android:layout_width="55dp"
         android:layout_height="86dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="55dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imgLed3"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         app:srcCompat="@drawable/led_down" />

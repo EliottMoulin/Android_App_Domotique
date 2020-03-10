@@ -10,6 +10,9 @@
     <string name="textIpConfig">Saisissez l\'adresse IP de votre server</string>
     <string name="validate">Validé</string>
     <string name="ip_not_valid">IP address not valid&#8230;</string>
+    <string name="cameraFragment">Camera Live</string>
+    <string name="buttonStorage">Storage</string>
+
 
 
 

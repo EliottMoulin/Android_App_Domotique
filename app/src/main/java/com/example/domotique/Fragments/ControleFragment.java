@@ -81,14 +81,13 @@ public class ControleFragment extends Fragment {
         this.imgPort3 = view.findViewById(R.id.imgLed3);
         this.imgPort4 = view.findViewById(R.id.imgLed4);
 
-
         this.test = view.findViewById(R.id.test);
 
 
 
         /*--- DELAIS ENTRE LES REQUETTES GET ---*/
         myHandler = new Handler();
-        myHandler.postDelayed(myRunnable, 500);
+        myHandler.postDelayed(myRunnable, 221);
 
         this.switchAllPorts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,17 +95,19 @@ public class ControleFragment extends Fragment {
                 if (ControleFragment.this.switchAllPorts.isChecked()) {
                     String val = "2";
                     setChangeAllEtats(val);
+                    ControleFragment.this.state = "ON";
                 } else {
                     String val = "1";
                     setChangeAllEtats(val);
+                    ControleFragment.this.state = "OFF";
                 }
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
             }
         });
         this.switchAllPorts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
@@ -115,9 +116,7 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.switchport2.setChecked(true);
                     ControleFragment.this.switchport3.setChecked(true);
                     ControleFragment.this.switchport4.setChecked(true);
-
                 } else {
-                    ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
@@ -128,7 +127,6 @@ public class ControleFragment extends Fragment {
                     ControleFragment.this.switchport4.setChecked(false);
 
                 }
-                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -138,6 +136,12 @@ public class ControleFragment extends Fragment {
             public void onClick(View v) {
                 String val = "1";
                 setModifyEtat(val);
+                if (ControleFragment.this.switchport1.isChecked()){
+                    ControleFragment.this.state = "ON";
+                }else{
+                    ControleFragment.this.state = "OFF";
+                }
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -146,13 +150,11 @@ public class ControleFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
                 } else {
-                    ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort1.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+
 
 
             }
@@ -163,19 +165,23 @@ public class ControleFragment extends Fragment {
             public void onClick(View v) {
                 String val = "2";
                 setModifyEtat(val);
+                if (ControleFragment.this.switchport2.isChecked()){
+                    ControleFragment.this.state = "ON";
+                }else{
+                    ControleFragment.this.state = "OFF";
+                }
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
             }
         });
         this.switchport2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
                 } else {
-                    ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort2.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -185,19 +191,23 @@ public class ControleFragment extends Fragment {
             public void onClick(View v) {
                 String val = "3";
                 setModifyEtat(val);
+                if (ControleFragment.this.switchport3.isChecked()){
+                    ControleFragment.this.state = "ON";
+                }else{
+                    ControleFragment.this.state = "OFF";
+                }
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
             }
         });
         this.switchport3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
                 } else {
-                    ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort3.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -208,19 +218,23 @@ public class ControleFragment extends Fragment {
             public void onClick(View v) {
                 String val = "4";
                 setModifyEtat(val);
+                if (ControleFragment.this.switchport4.isChecked()){
+                    ControleFragment.this.state = "ON";
+                }else{
+                    ControleFragment.this.state = "OFF";
+                }
+                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
             }
         });
         this.switchport4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ControleFragment.this.state = "ON";
                     ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_up));
                 } else {
-                    ControleFragment.this.state = "OFF";
                     ControleFragment.this.imgPort4.setImageDrawable(getResources().getDrawable(R.drawable.led_down));
                 }
-                Toast.makeText(getActivity(), ControleFragment.this.state, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -358,10 +372,9 @@ public class ControleFragment extends Fragment {
     private Runnable myRunnable = new Runnable() {
         @Override
         public void run() {
-
+            Log.d(TAG, "run: TIMER GET CONTROLE");
             getIpByFile();
             getEtatPort();
-
             myHandler.postDelayed(this, 2021);
         }
     };

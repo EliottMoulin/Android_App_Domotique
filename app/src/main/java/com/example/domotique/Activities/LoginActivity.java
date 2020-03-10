@@ -1,8 +1,8 @@
 package com.example.domotique.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.domotique.R;
+import com.example.domotique.Services.GetIntentService;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,9 +25,13 @@ public class LoginActivity extends AppCompatActivity {
     private Button validate;
 
     private final static String TAG = LoginActivity.class.getName();
+   // public static final String CHANNEL_ID_1 = "channel1";
+  //  private NotificationManagerCompat notificationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -97,7 +102,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
+
+        // 1ere notif
+    /*    notificationManager = NotificationManagerCompat.from(this);
+        createNotificationChannels();*/
+
+
+
+        Intent msgIntent = new Intent(this, GetIntentService.class);
+        startService(msgIntent);
     }
+
+
 
     @Override
     protected void onStart() {
@@ -154,12 +170,44 @@ public class LoginActivity extends AppCompatActivity {
         if (this.password.getText().toString().equals(pass)) {
             Toast.makeText(this, "Bienvenue !", Toast.LENGTH_SHORT).show();
             startMainActivity(view);
+         //   sendOnChannel1(view);
         } else {
             this.password.setText("");
             this.password.setError("Password incorect !");
         }
 
     }
+
+    /*private void createNotificationChannels() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel1 = new NotificationChannel(
+                    CHANNEL_ID_1,
+                    "Channel 1",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel1.setDescription("This is channel 1");
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel1);
+
+        }
+
+    }
+
+    public void sendOnChannel1(View v){
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_1)
+                .setSmallIcon(R.drawable.ic_dialog_close_dark)
+                .setContentTitle("oui")
+                .setContentText("ouiouiouioui")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        notificationManager.notify(1, notification);
+    }*/
+
+
+
+
 
 
 }
