@@ -1,6 +1,7 @@
 package com.example.domotique.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.domotique.Activities.StorageActivity;
 import com.example.domotique.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,8 +21,7 @@ public class CameraFragment extends Fragment {
     private final static String TAG = CameraFragment.class.getName();
 
     public ImageView image1;
-    public ImageView image2;
-    private Boolean bool = true;
+    private Button buttonGoTo;
 
     private static final String URL = "http://10.102.252.221/snap.jpeg";
     private Handler handler;
@@ -30,10 +32,18 @@ public class CameraFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
 
         this.image1 = view.findViewById(R.id.imageViewLive);
-        this.image2 = view.findViewById(R.id.imageViewLoad);
+        this.buttonGoTo = view.findViewById(R.id.buttonGoToStorage);
 
         handler = new Handler();
         handler.postDelayed(imageUpdater, 0);
+
+        this.buttonGoTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startStorageActivity();
+            }
+        });
+
 
         return view;
     }
@@ -69,36 +79,33 @@ public class CameraFragment extends Fragment {
     Runnable imageUpdater = new Runnable() {
         @Override
         public void run() {
-            if(bool){
-                loadDisplayImage(image2, image1);
-                bool = false;
-            }else{
-                loadDisplayImage(image1, image2);
-                bool = true;
-            }
 
+            loadDisplayImage();
 
-            handler.postDelayed(this, 750);
+            handler.postDelayed(this, 921);
         }
     };
 
 
 
 
-    private void loadDisplayImage(ImageView i1, ImageView i2) {
-        this.image1 = i1;
-        this.image2 = i2;
-        i1.setVisibility(View.VISIBLE);
-        i2.setVisibility(View.GONE);
+    private void loadDisplayImage() {
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
                 Picasso.with(getContext()).invalidate(URL); //recharge URL
-                Picasso.with(getContext()).load(URL).into(CameraFragment.this.image2); //on remet la photo de l'URL dans i2
-            }
-        },250);
+                Picasso.with(getContext()).load(URL).fit().centerCrop()
+                        .noPlaceholder()
+                        .into(CameraFragment.this.image1);
+
 
     }
+
+    private void startStorageActivity() {
+        Log.d(TAG, "startStorageActivity");
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), StorageActivity.class);
+        super.startActivity(intent);
+
+    }
+
 
 }

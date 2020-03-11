@@ -71,7 +71,6 @@
         app:layout_constraintTop_toBottomOf="@+id/switchPort3" />
 
 
-
     <View
         android:id="@+id/divider2"
         android:layout_width="409dp"
@@ -79,83 +78,95 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchPort4"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.223" />
 
-    <ImageView
-        android:id="@+id/imgLed1"
-        android:layout_width="55dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="35dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:srcCompat="@drawable/led_down" />
-
-    <ImageView
-        android:id="@+id/imgLed2"
-        android:layout_width="55dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imgLed1"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:srcCompat="@drawable/led_down" />
-
-    <ImageView
-        android:id="@+id/imgLed3"
-        android:layout_width="55dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imgLed2"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:srcCompat="@drawable/led_down" />
-
-    <ImageView
-        android:id="@+id/imgLed4"
-        android:layout_width="55dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="55dp"
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="362dp"
+        android:layout_height="142dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgLed3"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:srcCompat="@drawable/led_down" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2">
 
-    <TextView
-        android:id="@+id/numP1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        app:layout_constraintBottom_toBottomOf="@+id/imgLed1"
-        app:layout_constraintEnd_toEndOf="@+id/imgLed1"
-        app:layout_constraintStart_toStartOf="@+id/imgLed1" />
+        <ImageView
+            android:id="@+id/imgLed1"
+            android:layout_width="55dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/led_down" />
 
-    <TextView
-        android:id="@+id/numP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        app:layout_constraintBottom_toBottomOf="@+id/imgLed2"
-        app:layout_constraintEnd_toEndOf="@+id/imgLed2"
-        app:layout_constraintStart_toStartOf="@+id/imgLed2" />
+        <ImageView
+            android:id="@+id/imgLed2"
+            android:layout_width="55dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imgLed1"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/led_down" />
 
-    <TextView
-        android:id="@+id/numP3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        app:layout_constraintBottom_toBottomOf="@+id/imgLed3"
-        app:layout_constraintEnd_toEndOf="@+id/imgLed3"
-        app:layout_constraintStart_toStartOf="@+id/imgLed3" />
-    <TextView
-        android:id="@+id/numP4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4"
-        app:layout_constraintBottom_toBottomOf="@+id/imgLed4"
-        app:layout_constraintEnd_toEndOf="@+id/imgLed4"
-        app:layout_constraintStart_toStartOf="@+id/imgLed4" />
+        <ImageView
+            android:id="@+id/imgLed3"
+            android:layout_width="55dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imgLed2"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/led_down" />
+
+        <ImageView
+            android:id="@+id/imgLed4"
+            android:layout_width="55dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgLed3"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/led_down" />
+
+        <TextView
+            android:id="@+id/numP1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLed1"
+            app:layout_constraintEnd_toEndOf="@+id/imgLed1"
+            app:layout_constraintStart_toStartOf="@+id/imgLed1" />
+
+        <TextView
+            android:id="@+id/numP2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLed2"
+            app:layout_constraintEnd_toEndOf="@+id/imgLed2"
+            app:layout_constraintStart_toStartOf="@+id/imgLed2" />
+
+        <TextView
+            android:id="@+id/numP3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLed3"
+            app:layout_constraintEnd_toEndOf="@+id/imgLed3"
+            app:layout_constraintStart_toStartOf="@+id/imgLed3" />
+
+        <TextView
+            android:id="@+id/numP4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLed4"
+            app:layout_constraintEnd_toEndOf="@+id/imgLed4"
+            app:layout_constraintStart_toStartOf="@+id/imgLed4" />
+    </android.support.v7.widget.LinearLayoutCompat>
 
     <TextView
         android:id="@+id/test"

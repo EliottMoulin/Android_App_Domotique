@@ -25,8 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button validate;
 
     private final static String TAG = LoginActivity.class.getName();
-   // public static final String CHANNEL_ID_1 = "channel1";
-  //  private NotificationManagerCompat notificationManager;
 
 
     @Override
@@ -103,11 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-        // 1ere notif
-    /*    notificationManager = NotificationManagerCompat.from(this);
-        createNotificationChannels();*/
-
-
 
         Intent msgIntent = new Intent(this, GetIntentService.class);
         startService(msgIntent);
@@ -177,36 +170,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
-
-    /*private void createNotificationChannels() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel1 = new NotificationChannel(
-                    CHANNEL_ID_1,
-                    "Channel 1",
-                    NotificationManager.IMPORTANCE_HIGH
-            );
-            channel1.setDescription("This is channel 1");
-
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel1);
-
-        }
-
-    }
-
-    public void sendOnChannel1(View v){
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_1)
-                .setSmallIcon(R.drawable.ic_dialog_close_dark)
-                .setContentTitle("oui")
-                .setContentText("ouiouiouioui")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
-        notificationManager.notify(1, notification);
-    }*/
-
-
-
 
 
 

@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme2"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activities.StorageActivity"></activity>
+
         <service
             android:name=".Services.GetIntentService"
-            android:exported="true"></service>
+            android:exported="true" />
+
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait" />

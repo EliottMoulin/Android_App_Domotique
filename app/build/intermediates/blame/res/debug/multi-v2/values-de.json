@@ -1,27 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/home/moulieli/moulieli_linux/Projet/Android_App_Domotique/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-de/values-de.xml",
+            "outputFile": "C:\\Users\\StormDelta\\Documents\\Dev\\Android\\Android_App_Domotique\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-de\\values-de.xml",
             "map": [
                 {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/889dc9ea398f29de39fd0e99619a3a6b/mediarouter-v7-28.0.0/res/values-de/values-de.xml",
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\b73d0db3c489aeab8b531c92b0313ef9\\support-compat-28.0.0\\res\\values-de\\values-de.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,155,262,388,504,605,693,786,900,1000,1098,1189,1285,1405,1519,1603,1691,1774,1877,1995,2081",
-                        "endColumns": "99,106,125,115,100,87,92,113,99,97,90,95,119,113,83,87,82,102,117,85,92",
-                        "endOffsets": "150,257,383,499,600,688,781,895,995,1093,1184,1280,1400,1514,1598,1686,1769,1872,1990,2076,2169"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2843,2943,3050,3176,3292,3393,3481,3574,3688,3788,3886,3977,4073,4193,4307,4391,4479,4562,4665,4783,4869",
-                        "endColumns": "99,106,125,115,100,87,92,113,99,97,90,95,119,113,83,87,82,102,117,85,92",
-                        "endOffsets": "2938,3045,3171,3287,3388,3476,3569,3683,3783,3881,3972,4068,4188,4302,4386,4474,4557,4660,4778,4864,4957"
+                        "startLines": "51",
+                        "startColumns": "4",
+                        "startOffsets": "5044",
+                        "endColumns": "100",
+                        "endOffsets": "5140"
                     }
                 },
                 {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/7f5f0b3369d8fa8a72a20e2278ec0acc/appcompat-v7-28.0.0/res/values-de/values-de.xml",
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\7f5f0b3369d8fa8a72a20e2278ec0acc\\appcompat-v7-28.0.0\\res\\values-de\\values-de.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,20 +38,20 @@
                     }
                 },
                 {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/b73d0db3c489aeab8b531c92b0313ef9/support-compat-28.0.0/res/values-de/values-de.xml",
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\889dc9ea398f29de39fd0e99619a3a6b\\mediarouter-v7-28.0.0\\res\\values-de\\values-de.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,155,262,388,504,605,693,786,900,1000,1098,1189,1285,1405,1519,1603,1691,1774,1877,1995,2081",
+                        "endColumns": "99,106,125,115,100,87,92,113,99,97,90,95,119,113,83,87,82,102,117,85,92",
+                        "endOffsets": "150,257,383,499,600,688,781,895,995,1093,1184,1280,1400,1514,1598,1686,1769,1872,1990,2076,2169"
                     },
                     "to": {
-                        "startLines": "51",
-                        "startColumns": "4",
-                        "startOffsets": "5044",
-                        "endColumns": "100",
-                        "endOffsets": "5140"
+                        "startLines": "29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2843,2943,3050,3176,3292,3393,3481,3574,3688,3788,3886,3977,4073,4193,4307,4391,4479,4562,4665,4783,4869",
+                        "endColumns": "99,106,125,115,100,87,92,113,99,97,90,95,119,113,83,87,82,102,117,85,92",
+                        "endOffsets": "2938,3045,3171,3287,3388,3476,3569,3683,3783,3881,3972,4068,4188,4302,4386,4474,4557,4660,4778,4864,4957"
                     }
                 }
             ]

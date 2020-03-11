@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/home/moulieli/moulieli_linux/Projet/Android_App_Domotique/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "C:\\Users\\StormDelta\\Documents\\Dev\\Android\\Android_App_Domotique\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/9d7250a774d78c6da773e4ce19c93e82/design-28.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\889dc9ea398f29de39fd0e99619a3a6b\\mediarouter-v7-28.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,124",
+                        "endColumns": "68,68",
+                        "endOffsets": "119,188"
+                    },
+                    "to": {
+                        "startLines": "19,20",
+                        "startColumns": "4,4",
+                        "startOffsets": "1173,1242",
+                        "endColumns": "68,68",
+                        "endOffsets": "1237,1306"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\9d7250a774d78c6da773e4ce19c93e82\\design-28.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,30 +40,13 @@
                     }
                 },
                 {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/7f5f0b3369d8fa8a72a20e2278ec0acc/appcompat-v7-28.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\7f5f0b3369d8fa8a72a20e2278ec0acc\\appcompat-v7-28.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
                         "startOffsets": "55,124,193,263,337,413,472,543",
                         "endColumns": "68,68,69,73,75,58,70,67",
                         "endOffsets": "119,188,258,332,408,467,538,606"
-                    }
-                },
-                {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/889dc9ea398f29de39fd0e99619a3a6b/mediarouter-v7-28.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,124",
-                        "endColumns": "68,68",
-                        "endOffsets": "119,188"
-                    },
-                    "to": {
-                        "startLines": "19,20",
-                        "startColumns": "4,4",
-                        "startOffsets": "1173,1242",
-                        "endColumns": "68,68",
-                        "endOffsets": "1237,1306"
                     }
                 }
             ]

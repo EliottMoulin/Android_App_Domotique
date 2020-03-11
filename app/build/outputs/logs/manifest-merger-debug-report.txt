@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\9d7250a774d78c6da773e4ce19c93e82\design-28.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:mediarouter-v7:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\889dc9ea398f29de39fd0e99619a3a6b\mediarouter-v7-28.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\7f5f0b3369d8fa8a72a20e2278ec0acc\appcompat-v7-28.0.0\AndroidManifest.xml:17:1-22:12
@@ -38,33 +38,33 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\StormDelta\.gradl
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\855199d21a2457dffd94f776f414402b\livedata-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\0c580ad6917269345b415f2689381fa7\livedata-core-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\32c3c3c1ff1572cd4fbf4adc8b2e281b\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
 	package
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:3:5-36
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:3:5-36
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-31:12
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:1-34:12
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:5:5-67
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:5:22-64
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:6:5-79
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:6:22-76
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:8:5-29:19
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:8:5-32:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\9d7250a774d78c6da773e4ce19c93e82\design-28.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\9d7250a774d78c6da773e4ce19c93e82\design-28.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\247f998e4bdaf38a6cc6f3ef395b6cd1\constraint-layout-1.1.3\AndroidManifest.xml:9:5-20
@@ -76,49 +76,53 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\StormDelta
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\b73d0db3c489aeab8b531c92b0313ef9\support-compat-28.0.0\AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:11:9-41
 	android:roundIcon
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:12:9-54
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:12:9-54
 	android:icon
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:10:9-49
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:10:9-49
 	android:allowBackup
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:14:9-41
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:14:9-41
 	android:usesCleartextTraffic
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:15:9-44
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:15:9-44
+activity#com.example.domotique.Activities.StorageActivity
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:16:9-73
+	android:name
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:16:19-61
 service#com.example.domotique.Services.GetIntentService
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:16:9-18:47
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:18:9-20:39
 	android:exported
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:18:13-36
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:20:13-36
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:17:13-54
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:19:13-54
 activity#com.example.domotique.Activities.MainActivity
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:19:9-21:52
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:22:9-24:52
 	android:screenOrientation
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:21:13-49
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:24:13-49
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:20:13-52
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:23:13-52
 activity#com.example.domotique.Activities.LoginActivity
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:22:9-28:20
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:25:9-31:20
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:22:19-59
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:25:19-59
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:23:13-27:29
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:24:17-69
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:27:17-69
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:24:25-66
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:27:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:26:17-77
+ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml:26:27-74
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml:29:27-74
 uses-sdk
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:design:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\9d7250a774d78c6da773e4ce19c93e82\design-28.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\9d7250a774d78c6da773e4ce19c93e82\design-28.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:mediarouter-v7:28.0.0] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\889dc9ea398f29de39fd0e99619a3a6b\mediarouter-v7-28.0.0\AndroidManifest.xml:20:5-44
@@ -187,13 +191,13 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\StormDelta\.gr
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\0c580ad6917269345b415f2689381fa7\livedata-core-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\32c3c3c1ff1572cd4fbf4adc8b2e281b\runtime-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\StormDelta\.gradle\caches\transforms-2\files-2.1\32c3c3c1ff1572cd4fbf4adc8b2e281b\runtime-1.1.1\AndroidManifest.xml:20:5-44
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		ADDED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
-		INJECTED from E:\IUT\2emeAnnee\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\StormDelta\Documents\Dev\Android\Android_App_Domotique\app\src\main\AndroidManifest.xml

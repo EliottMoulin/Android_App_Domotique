@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/moulieli/moulieli_linux/Projet/Android_App_Domotique/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
+            "outputFile": "C:\\Users\\StormDelta\\Documents\\Dev\\Android\\Android_App_Domotique\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "/home/moulieli/.gradle/caches/transforms-2/files-2.1/7f5f0b3369d8fa8a72a20e2278ec0acc/appcompat-v7-28.0.0/res/values-v25/values-v25.xml",
+                    "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\7f5f0b3369d8fa8a72a20e2278ec0acc\\appcompat-v7-28.0.0\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",
