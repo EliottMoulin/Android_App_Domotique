@@ -652,16 +652,16 @@ public final class R {
         public static final int customPanel = 0x7f080038;
         public static final int decor_content_parent = 0x7f080039;
         public static final int default_activity_button = 0x7f08003a;
-        public static final int edit_query = 0x7f080046;
-        public static final int end = 0x7f080047;
-        public static final int expand_activities_button = 0x7f08004c;
-        public static final int expanded_menu = 0x7f08004d;
-        public static final int forever = 0x7f080053;
-        public static final int group_divider = 0x7f080056;
-        public static final int home = 0x7f080058;
-        public static final int icon = 0x7f08005a;
-        public static final int icon_group = 0x7f08005b;
-        public static final int image = 0x7f08005d;
+        public static final int edit_query = 0x7f080047;
+        public static final int end = 0x7f080048;
+        public static final int expand_activities_button = 0x7f08004d;
+        public static final int expanded_menu = 0x7f08004e;
+        public static final int forever = 0x7f080054;
+        public static final int group_divider = 0x7f080057;
+        public static final int home = 0x7f080059;
+        public static final int icon = 0x7f08005b;
+        public static final int icon_group = 0x7f08005c;
+        public static final int image = 0x7f08005e;
         public static final int info = 0x7f080078;
         public static final int italic = 0x7f08007b;
         public static final int left = 0x7f08007f;
@@ -818,8 +818,8 @@ public final class R {
         public static final int abc_shareactionprovider_share_with = 0x7f0e0024;
         public static final int abc_shareactionprovider_share_with_application = 0x7f0e0025;
         public static final int abc_toolbar_collapse_description = 0x7f0e0026;
-        public static final int search_menu_title = 0x7f0e0057;
-        public static final int status_bar_notification_info_overflow = 0x7f0e0058;
+        public static final int search_menu_title = 0x7f0e0059;
+        public static final int status_bar_notification_info_overflow = 0x7f0e005a;
     }
     public static final class style {
         private style() {}

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\StormDelta\\Documents\\Dev\\Android\\Android_App_Domotique\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-uk\\values-uk.xml",
+            "outputFile": "E:\\IUT\\Android_App_Domotique\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-uk\\values-uk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\StormDelta\\.gradle\\caches\\transforms-2\\files-2.1\\889dc9ea398f29de39fd0e99619a3a6b\\mediarouter-v7-28.0.0\\res\\values-uk\\values-uk.xml",

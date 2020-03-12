@@ -96,10 +96,10 @@ public final class R {
         public static final int blocking = 0x7f080023;
         public static final int bottom = 0x7f080024;
         public static final int chronometer = 0x7f08002e;
-        public static final int end = 0x7f080047;
-        public static final int forever = 0x7f080053;
-        public static final int icon = 0x7f08005a;
-        public static final int icon_group = 0x7f08005b;
+        public static final int end = 0x7f080048;
+        public static final int forever = 0x7f080054;
+        public static final int icon = 0x7f08005b;
+        public static final int icon_group = 0x7f08005c;
         public static final int info = 0x7f080078;
         public static final int italic = 0x7f08007b;
         public static final int left = 0x7f08007f;
@@ -141,7 +141,7 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int status_bar_notification_info_overflow = 0x7f0e0058;
+        public static final int status_bar_notification_info_overflow = 0x7f0e005a;
     }
     public static final class style {
         private style() {}

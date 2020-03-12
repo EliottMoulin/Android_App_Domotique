@@ -13,6 +13,10 @@
     <string name="cameraFragment">Camera Live</string>
     <string name="buttonStorage">Storage</string>
     <string name="textStorage">Voir les enregistrements</string>
+    <string name="lastIntrusion">Derniere Intrusion</string>
+    <string name="beforeLastIntrusion">Avant derniere intrusion</string>
+
+
 
 
 

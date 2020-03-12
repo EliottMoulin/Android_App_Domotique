@@ -1327,6 +1327,7 @@ id disableHome
 id divider1
 id divider2
 id divider3
+id divider4
 id edit_query
 id end
 id end_padder
@@ -1364,7 +1365,6 @@ id imageView18
 id imageView19
 id imageView2
 id imageView20
-id imageView21
 id imageView3
 id imageView4
 id imageView5
@@ -1722,6 +1722,7 @@ string abc_toolbar_collapse_description
 string allports
 string app_name
 string appbar_scrolling_view_behavior
+string beforeLastIntrusion
 string bottom_sheet_behavior
 string buttonStorage
 string cameraFragment
@@ -1733,6 +1734,7 @@ string hide_bottom_view_on_scroll_behavior
 string inputIpConfig
 string input_mdp
 string ip_not_valid
+string lastIntrusion
 string mr_button_content_description
 string mr_cast_button_connected
 string mr_cast_button_connecting
